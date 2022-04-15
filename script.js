@@ -25,7 +25,11 @@ createList();
 //  Insert items into DOM
 
 function createList(){
-    [...richestPeople].forEach((person, index) => {
+    [...richestPeople]
+    .map(people => ({value: people, sort: Math.random()}))
+    .sort((valA,valB) => valA.sort - valB.sort)
+    .map(people => people.value)
+    .forEach((person, index) => {
         const listItem = document.createElement('li');
         listItem.setAttribute('data-index', index);
 
